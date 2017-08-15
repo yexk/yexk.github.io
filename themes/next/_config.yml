@@ -318,7 +318,7 @@ han: false
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: a3ba2b238223714f37841f8ecc2bd53c
 
 # Duoshuo ShortName
 #duoshuo_shortname:
@@ -362,7 +362,7 @@ valine:
 # Available value:
 #    button | slide
 # Warning: Baidu Share does not support https.
-#baidushare:
+baidushare: true
 ##  type: button
 
 # Share
