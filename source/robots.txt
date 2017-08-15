@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: 
+Disallow: /images/
+Disallow: /js/
+Disallow: /css/
+Disallow: /lib/
+Sitemap: http://ym125.cc/sitemap.xml
+Sitemap: http://ym125.cc/baidusitemap.xml

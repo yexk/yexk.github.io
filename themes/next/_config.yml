@@ -32,9 +32,17 @@ copyright: true
 # Tips: Before you open this tag, remember set up your URL in hexo _config.yml ( ex. url: http://yourdomain.com )
 canonical: true
 
+url: http://ym125.cc
+
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
 seo: true
 
+
+sitemap: 
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+    
 # If true, will add site-subtitle to index page, added in main hexo config.
 # subtitle: Subtitle
 index_with_subtitle: false
@@ -118,7 +126,7 @@ social_icons:
   Weibo: weibo
 
 # Blog rolls
-# links_title: Links
+links_title: 友情链接
 #links_layout: block
 #links_layout: inline
 links:
