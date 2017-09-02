@@ -23,17 +23,18 @@ Composer：简介、下载和安装、快速入门、常用的场景。
 Laravel：简介、下载和安装。
 - [laravel下载和安装](/20170825/laravel-download-install/)
 - [laravel基本路由](/20170825/laravel-router/)
+- [laravel基本路由](/20170825/laravel-router/)
 
 ### 第二讲 《命令的使用》
 Laravel：
-- 目录结构
-- 命令行工具（artisan）
+- [目录结构](/20170825/laravel-download-install/)
+- [命令行工具（artisan）](20170902/artisan/)
 - artisan常用命令
 
 ### 第三讲 《路由模式》
 Laravel：
-- 路由（router）
-	- CSRF 白名单
+- [路由（router）](/20170902/router-base/)
+	- [CSRF 白名单](/20170902/router-base/)
 - 请求（request）
 - 响应（response）
 
