@@ -45,13 +45,14 @@ JavaScript已经被Netscape公司提交给ECMA制定为标准，称之为ECMAScr
 > 目前最新的版本是es7。不过在现在的开发中es6用的都很少。只是一些 `nodejs` 相关的技术才使用了到了一些。
 
 它规定了这门语言的下列组成部分：
-1. 语法。
-2. 类型
-3. 语句
-4. 关键字
-5. 保留字
-6. 操作符
-7. 对象
+1. 语法（解析规则，关键字，流程控制，对象初始化等）
+2. 错误处理机制（throw， try/catch 以及用户自定义错误类型的能力）
+3. 类型（布尔值，数字，字符串，函数，对象等）
+4. 全局对象。在浏览器环境中，这个全局对象就是 window 对象，但是 ECMAScript 只定义与浏览器无关的 APIs（例如，parseInt， parseFloat， decodeURI， encodeURI 等）
+5. 基于原型的继承机制
+6. 内置对象和函数（JSON，Math，Array.prototype 方法，Object introspection 方法等）
+7. 严格模式
+
 
 ### DOM （文档对象模型）
 根据书中的描述和我的所识。主要制定了对文档的操作接口。实现了控制文档显示数据。按照我们的意愿去加载所需要的内容。  
@@ -71,7 +72,11 @@ JavaScript已经被Netscape公司提交给ECMA制定为标准，称之为ECMAScr
 6. 对 `cookie` 支持。
 7. 像 `XMLHttpRequest` 和 `ActiveXObject` 对象的支持。
 
-> 由于浏览器厂商的不一样。导致的这些对象的属性和方法有少许的不一样。
+> 由于浏览器厂商的不一样。导致的这些对象的属性和方法有少许的不一样。  
+截止2014年8月份，主流浏览器的最新版本都已经支持 `ECMAScript 5.1` ，但是旧版本的浏览器大都仅支持 `ECMAScript 3` 和 `ECMAScript 5` 的部分标准。[这里](http://kangax.github.io/compat-table/non-standard/)是一些关于 `ECMAScript 5` 的浏览器支持情况的资料。如今，主流浏览器的最新版本已经支持 `ECMAScript 6` 的大部分标准。
+
+### 未来  
+ECMA-262（ECMAScript 4 或者 ES4）第4版的提议本应成为自1999年第3版发布以来的一次重要更新，但是在2008年8月份，ECMAScript第4版被回退到一个代号为ECMAScript Harmony的项目，像const关键字以及对象代理等内容都被涵盖其中。你可以在这里跟踪这个项目的进展。ECMA 委员会已经在 2015年6月17号，正式发布了第6版标准。
 
 # 读后感
 认识 `JavaScript` 和 `EMCAScript` 的区别认识。前者基于后者提供的语法和基础的支持构建了一门脚步本语言。
