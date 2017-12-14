@@ -2,7 +2,7 @@
 layout: blog
 title: 动画效果 (Animation)
 date: 2017-08-15 16:27:49
-categories: CSS
+categories: css
 tags:
 - animation
 - css动画

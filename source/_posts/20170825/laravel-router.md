@@ -2,7 +2,7 @@
 layout: blog
 title: laravel基本路由
 date: 2017-08-25 22:09:56
-categories: PHP
+categories: php
 tags: 
 - laravel
 - route

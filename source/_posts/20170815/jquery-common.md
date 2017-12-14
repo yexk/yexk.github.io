@@ -2,7 +2,7 @@
 layout: blog
 title: jQuery常用的方法
 date: 2017-08-15 16:14:27
-categories: Javascript
+categories: javascript
 tags: 
 - jquery
 - function

@@ -2,7 +2,7 @@
 layout: blog
 title: 移动端JavaScript调试
 date: 2017-08-15 16:01:37
-categories: Javascript
+categories: javascript
 tags:
 - 前端调试
 - console

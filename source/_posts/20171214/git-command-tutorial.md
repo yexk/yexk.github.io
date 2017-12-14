@@ -3,7 +3,7 @@ layout: blog
 title: git命令行教程（按照工作流程）
 date: 2017-12-14 15:15:43
 categories: git
-tags:
+tags: github
 ---
 
 > git命令网上和 `git --help` 都能看到很多。但新手很多情况下都分不清啥时候该用哪个命令，应该用什么命令。接下来提供一套流程想关的命令教程。

@@ -2,7 +2,7 @@
 layout: blog
 title: ISSET和EMPTY的区别
 date: 2017-09-02 20:12:16
-categories: PHP
+categories: php
 tags:
 - isset
 - empty

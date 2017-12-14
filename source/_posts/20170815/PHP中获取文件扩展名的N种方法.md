@@ -2,7 +2,7 @@
 layout: blog
 title: PHP中获取文件扩展名的N种方法
 date: 2017-08-15 01:48:26
-categories: PHP 
+categories: php 
 tags: 
 - php
 - function 

@@ -2,7 +2,7 @@
 layout: blog
 title: Linux centos 配置更新yum源
 date: 2017-08-15 16:33:56
-categories: Linux
+categories: linux
 tags:
 - centos
 - centos 7

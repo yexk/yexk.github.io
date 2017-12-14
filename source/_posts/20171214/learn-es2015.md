@@ -2,7 +2,7 @@
 layout: blog
 title: 学习 ES2015
 date: 2017-12-14 11:06:24
-categories: ES6
+categories: es6
 tags:  
 - ES2015
 - ES6

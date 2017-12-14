@@ -2,7 +2,7 @@
 layout: blog
 title: MySQL遇到的问题
 date: 2017-08-16 11:40:26
-categories: Mysql 
+categories: mysql 
 tags: 
 - mysql
 - 常见问题

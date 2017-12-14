@@ -2,7 +2,7 @@
 layout: blog
 title: PHP常用的函数
 date: 2017-08-16 11:52:23
-categories: PHP
+categories: php
 tags: 
 - php 
 - common

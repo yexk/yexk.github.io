@@ -2,7 +2,7 @@
 layout: blog
 title: JavaScript unicode和16进制互转
 date: 2017-09-06 20:51:17
-categories: JavaScript
+categories: javascript
 tags: 
 ---
 

@@ -2,11 +2,8 @@
 layout: blog
 title: git命令行秘钥创建
 date: 2017-08-15 01:46:01
-tags: 
-	- github
-	- github
-	- github
-categories: github
+categories: git
+tags: github
 ---
 
 1. 打开 `Git Bash.` 命令行。

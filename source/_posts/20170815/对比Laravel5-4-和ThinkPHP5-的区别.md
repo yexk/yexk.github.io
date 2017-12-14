@@ -2,7 +2,7 @@
 layout: blog
 title: 对比Laravel5.4 和ThinkPHP5 的区别
 date: 2017-08-15 09:23:03
-categories: PHP
+categories: php
 tags: 
 - laravel
 - thinkphp

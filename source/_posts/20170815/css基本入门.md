@@ -2,7 +2,7 @@
 layout: blog
 title: css基本入门
 date: 2017-08-15 01:59:34
-categories: CSS
+categories: css
 tags: 
 - css
 - 快速入门
