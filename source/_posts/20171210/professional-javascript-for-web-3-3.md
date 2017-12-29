@@ -21,10 +21,31 @@ tags: JavaScript-web-develop-3rd
 
 > 按照惯例，`ECMAScript` 标识符采用`小驼峰`的命名方式。也推荐其标识符的时候使用`小驼峰`的形式。
 
+## 变量
+JavaScript有三种声明。
+
+- `var`
+	声明一个变量，可选择将其初始化为一个值。
+- `let`
+	声明一个块作用域的局部变量(block scope local variable)，可选择将其初始化为一个值。
+- `const`
+	声明一个只读的常量。
+
+```JavaScript
+var a ;
+// a 的值是 undefined 
+var a = 'Yexk'; 
+// a 的值是 Yexk
+let a
+// a 的值是 undefined 
+const a = 0.125;
+```
+> `var` 和 `let` 在同一个脚本下并无很大的区别，但在有 ‘{}’ 花括号中有作用域的区别，这个在下章节会详细提到。 `const` 这个变量一旦声明就不能重新赋值。若尝试对其进行赋值会抛出异常： `Uncaught TypeError: Assignment to constant variable.`
+
 ## 数据类型（7种）
 JavaScript语言可以识别下面 7 种不同类型的值：
   
-六种 `原型` 数据类型:
+六种 `原型` 数据类型（基本数据类型）:
 
 - `Boolean` .  布尔值，`true` 和 `false`.
 - `null` . 一个表明 `null` 值的特殊关键字。 `JavaScript` 是大小写敏感的，因此 `null` 与 `Null`、`NULL`或其他变量完全不同。
@@ -33,7 +54,7 @@ JavaScript语言可以识别下面 7 种不同类型的值：
 - `String` .  表示字符串，例如：`"Howdy"`
 - `Symbol` . ( 在 `ECMAScript 6` 中新添加的类型)。一种数据类型，它的实例是唯一且不可改变的。
 
-以及 `Object` 对象。
+以及 `Object` 对象（复合数据类型）。
 
 ## 操作符（运算符）
 JavaScript 拥有如下类型的运算符。书中详细的描述了运算符和运算符的优先级。
