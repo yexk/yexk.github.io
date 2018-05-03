@@ -83,7 +83,7 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   - type: git
-    repo: https://github.com/yexk/yexk.github.io.git
+    repo:  git@github.com:yexk/yexk.github.io.git
     branch: master
 #  - type: git
 #    repo: https://git.coding.net/Yexk/Yexk.coding.me.git
