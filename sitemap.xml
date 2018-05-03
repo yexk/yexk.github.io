@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ym125.cc/about/index.html</loc>
+    
+    <lastmod>2018-05-03T11:29:06.776Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ym125.cc/20180503/right-key/</loc>
     
     <lastmod>2018-05-03T10:59:57.297Z</lastmod>
@@ -194,13 +201,6 @@
     <loc>http://ym125.cc/categories/index.html</loc>
     
     <lastmod>2017-11-25T06:00:17.920Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ym125.cc/about/index.html</loc>
-    
-    <lastmod>2017-11-25T06:00:17.918Z</lastmod>
     
   </url>
   
