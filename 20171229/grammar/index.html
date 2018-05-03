@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="通过之前的两篇学习。感觉都变量和数据类型都没有很好的总结，这里引用下 MDN 的文章供大家阅读。JavaScript指南-&amp;gt;语法和数据类型   本章讨论 JavaScript 的基本语法，变量声明，数据类型 和 字面量。  基础JavaScript 从 Java 中借用了大部分语法，但也受到 Awk，Perl 和 Python 的影响。  JavaScript是区分大小写的，并使用 Uni">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语法基础和数据类型">
+<meta property="og:url" content="http://ym125.cc/20171229/grammar/index.html">
+<meta property="og:site_name" content="Yexk_M 极致分享">
+<meta property="og:description" content="通过之前的两篇学习。感觉都变量和数据类型都没有很好的总结，这里引用下 MDN 的文章供大家阅读。JavaScript指南-&amp;gt;语法和数据类型   本章讨论 JavaScript 的基本语法，变量声明，数据类型 和 字面量。  基础JavaScript 从 Java 中借用了大部分语法，但也受到 Awk，Perl 和 Python 的影响。  JavaScript是区分大小写的，并使用 Uni">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-29T11:21:29.762Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="语法基础和数据类型">
+<meta name="twitter:description" content="通过之前的两篇学习。感觉都变量和数据类型都没有很好的总结，这里引用下 MDN 的文章供大家阅读。JavaScript指南-&amp;gt;语法和数据类型   本章讨论 JavaScript 的基本语法，变量声明，数据类型 和 字面量。  基础JavaScript 从 Java 中借用了大部分语法，但也受到 Awk，Perl 和 Python 的影响。  JavaScript是区分大小写的，并使用 Uni">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ym125.cc/20171229/grammar/"/>
+
+
+
+
+
+  <title>语法基础和数据类型 | Yexk_M 极致分享</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a3ba2b238223714f37841f8ecc2bd53c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yexk_M 极致分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Yexk:一个具有幻想力的程序猿</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ym125.cc/20171229/grammar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yexk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yexk.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yexk_M 极致分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">语法基础和数据类型</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-29T18:01:03+08:00">
+                2017-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/20171229/grammar/" class="leancloud_visitors" data-flag-title="语法基础和数据类型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>通过之前的两篇学习。感觉都变量和数据类型都没有很好的总结，这里引用下 MDN 的文章供大家阅读。<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Grammar_and_types#%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F" target="_blank" rel="noopener">JavaScript指南-&gt;语法和数据类型</a></p>
+</blockquote>
+<blockquote>
+<p>本章讨论 <code>JavaScript</code> 的基本语法，变量声明，数据类型 和 字面量。</p>
+</blockquote>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>JavaScript 从 Java 中借用了大部分语法，但也受到 Awk，Perl 和 Python 的影响。 </p>
+<p>JavaScript是区分大小写的，并使用 Unicode字符集。</p>
+<p>在JavaScript中，指令被称为  statements，并用分号 (;)分隔。空格、制表符和换行符被称为空白字符。JavaScript 脚本的源文本是从左到右扫描，并将其转换成由 tokens（不可分割的词法单位）、控制字符、行终止符、注释或空白符组成的输入元素序列。ECMAScript 还定义了某些关键字和字面量，规定了如何自动插入分号（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Automatic_semicolon_insertion" target="_blank" rel="noopener">ASI</a>）来结束语句。但是，建议随时添加分号来结束你的语句，以避免可能的副作用。欲了解更多信息，请参阅 JavaScript <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Lexical_grammar" target="_blank" rel="noopener">词法语法</a>详细参考。</p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>注释的语法与 C ++和许多其他语言中的语法相同:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="comment">// 单行注释</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 这是一个更长的,</span></span><br><span class="line"><span class="comment">   多行注释</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 然而, 你不能, /* 嵌套注释 */</span> 语法错误 *<span class="regexp">/</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h1><p>JavaScript有三种声明。  </p>
+<ul>
+<li>var<br>  声明一个变量，可选择将其初始化为一个值。</li>
+<li>let<br>  声明一个块作用域的局部变量(block scope local variable)，可选择将其初始化为一个值。</li>
+<li>const<br>  声明一个只读的常量。</li>
+</ul>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>在应用程序中，使用变量来作为值的符号名。变量的名字又叫做标识符，其需要遵守一定的规则。</p>
+<p>一个 JavaScript 标识符必须以字母、下划线（_）或者美元符号（$）开头；后续的字符也可以是数字（0-9）。因为 JavaScript 语言是区分大小写的，这里所指的字母可以是“A”到“Z”（大写的）和“a”到“z”（小写的）。</p>
+<p>你可以使用大部分 <code>ISO 8859-1</code> 或 <code>Unicode</code> 编码的字符作标识符，例如 å 和 ü。你也可以使用 <code>Unicode</code> [转义字符][3] 作标识符。</p>
+<p>合法的标识符示例：<code>Number_hits</code> ， <code>temp99</code> 和 <code>_name</code>。<br>[3]:<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#String_literals" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#String_literals</a></p>
+<h2 id="声明变量"><a href="#声明变量" class="headerlink" title="声明变量"></a>声明变量</h2><p>你可以用以下三种方式声明变量：  </p>
+<ul>
+<li>使用关键词 <code>var</code> 。例如 <code>var x = 42</code> 。这个语法可以用来声明局部变量和全局变量。</li>
+<li>直接赋值。例如，<code>x = 42</code>。这样就会声明了一个全局变量并会在严格模式下产生一个 <code>ReferenceError</code>。声明变量时不应该用这种方式。</li>
+<li>使用关键词 <code>let</code>。例如 <code>let y = 13</code>。这个语法可以用来声明块作用域的局部变量(block scope local variable)。參考下方变量的作用域(Variable scope) 。</li>
+</ul>
+<h2 id="变量求值"><a href="#变量求值" class="headerlink" title="变量求值"></a>变量求值</h2><p>用 <code>var</code> 或 <code>let</code> 声明的且未赋初值的变量，值会被设定为 <code>undefined</code>。  </p>
+<p>试图访问一个未声明的变量或者访问一个使用 <code>let</code> 声明的但未初始化的变量会导致一个 <code>ReferenceError</code> 异常被抛出：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="comment">// a 的值是 undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"The value of a is "</span> + a); </span><br><span class="line"></span><br><span class="line"><span class="comment">// Uncaught ReferenceError: b is not defined</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"The value of b is "</span> + b); </span><br><span class="line"></span><br><span class="line"><span class="comment">// c 的值是 undefined </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"The value of c is "</span> + c); </span><br><span class="line"><span class="keyword">var</span> c;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Uncaught ReferenceError: x is not defined </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"The value of x is "</span> + x); </span><br><span class="line"><span class="keyword">let</span> x;</span><br></pre></td></tr></table></figure></p>
+<p>你可以使用 <code>undefined</code> 来判断变量是否已赋值。以下的代码中，变量input未被赋值，因而if条件语句的求值结果是<code>true</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> input;</span><br><span class="line"><span class="keyword">if</span>(input === <span class="literal">undefined</span>)&#123;</span><br><span class="line">  doThis();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  doThat();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>undefined</code> 值在布尔类型环境中会被当作 false。例如，下面的代码将会执行函数 <code>myFunction</code>，因为数组 <code>myArray</code> 中的元素未被赋值：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myArray = [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!myArray[<span class="number">0</span>]) &#123;</span><br><span class="line">  myFunction(); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>数值类型环境中 <code>undefined</code> 值会被转换为 <code>NaN</code>。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="comment">// 计算为 NaN</span></span><br><span class="line">a + <span class="number">2</span>;</span><br></pre></td></tr></table></figure></p>
+<p>当你对一个 <code>null</code> 变量求值时，空值 <code>null</code> 在数值类型环境中会被当作0来对待，而布尔类型环境中会被当作 <code>false</code>。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="keyword">var</span> n = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">typeof</span>(n);</span><br><span class="line"><span class="comment">// "object"</span></span><br><span class="line"><span class="comment">// The Null type has exactly one value, called null.</span></span><br><span class="line"><span class="built_in">console</span>.log(n * <span class="number">32</span>); <span class="comment">// 0</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h2><p>在所有函数之外声明的变量，叫做全局变量，因为它可被当前文档中的任何其他代码所访问。在函数内部声明的变量，叫做局部变量，因为它只能在该函数内部访问。  </p>
+<p>ECMAScript 6 之前的JavaScript没有 <a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Guide/Statements#Block_Statement" target="_blank" rel="noopener">语句块</a> 作用域；相反，语句块中声明的变量将成为语句块所在代码段的局部变量。例如，如下的代码将在控制台输出 <code>5</code>，因为 <code>x</code> 的作用域是声明了 <code>x</code> 的那个函数（或全局范围），而不是 <code>if</code> 语句块。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+<p>如果使用 <code>ECMAScript 6</code> 中的 <code>let</code> 声明，上述行为将发生变化。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> y = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(y); <span class="comment">// ReferenceError: y is not defined</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="变量声明提升-Variable-hoisting"><a href="#变量声明提升-Variable-hoisting" class="headerlink" title="变量声明提升(Variable hoisting)"></a>变量声明提升(Variable hoisting)</h2><p><code>JavaScript</code> 变量的另一特别之处是，你可以引用稍后声明的变量而不会引发异常。这一概念称为变量声明提升(hoisting)；<code>JavaScript</code> 变量感觉上是被“提升”或移到了所有函数和语句之前。然而提升后的变量将返回 <code>undefined</code> 值。所以在使用或引用某个变量之后进行声明和初始化操作，这个被提升的引用仍将得到 <code>undefined</code> 值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Example 1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="built_in">console</span>.log(x === <span class="literal">undefined</span>); <span class="comment">// logs "true"</span></span><br><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Example 2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// will return a value of undefined</span></span><br><span class="line"><span class="keyword">var</span> myvar = <span class="string">"my value"</span>;</span><br><span class="line"></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(myvar); <span class="comment">// undefined</span></span><br><span class="line">  <span class="keyword">var</span> myvar = <span class="string">"local value"</span>;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>上面的例子，也可写作：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">	</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Example 1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> x;</span><br><span class="line"><span class="built_in">console</span>.log(x === <span class="literal">undefined</span>); <span class="comment">// logs "true"</span></span><br><span class="line">x = <span class="number">3</span>;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Example 2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> myvar = <span class="string">"my value"</span>;</span><br><span class="line"> </span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> myvar;</span><br><span class="line">  <span class="built_in">console</span>.log(myvar); <span class="comment">// undefined</span></span><br><span class="line">  myvar = <span class="string">"local value"</span>;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>由于存在变量声明提升，一个函数中所有的var语句应尽可能地放在接近函数顶部的地方。这将大大提升程序代码的清晰度。  </p>
+<p>在 <code>ECMAScript 2015</code> 中，<code>let（const）</code> 将不会提升变量到代码块的顶部。因此，在变量声明之前引用这个变量，将抛出错误ReferenceError。这个变量将从代码块一开始的时候就处在一个“暂时性死区”，直到这个变量被声明为止。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(x); <span class="comment">// ReferenceError</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">3</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="函数提升（Function-hoisting）"><a href="#函数提升（Function-hoisting）" class="headerlink" title="函数提升（Function hoisting）"></a>函数提升（Function hoisting）</h2><p>对于函数，只有函数声明会被提升到顶部，而不包括函数表达式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 函数声明 */</span></span><br><span class="line"></span><br><span class="line">foo(); <span class="comment">// "bar"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"bar"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 函数表达式   表达式定义的函数，称为匿名函数。匿名函数没有函数提升。*/</span></span><br><span class="line"></span><br><span class="line">baz(); <span class="comment">// TypeError: baz is not a function</span></span><br><span class="line"><span class="comment">//此时的"baz"相当于一个声明的变量，类型为undefined。</span></span><br><span class="line">由于baz只是相当于一个变量，因此浏览器认为<span class="string">"baz()"</span>不是一个函数。</span><br><span class="line"><span class="keyword">var</span> baz = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"bar2"</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="全局变量-Global-variables"><a href="#全局变量-Global-variables" class="headerlink" title="全局变量(Global variables)"></a>全局变量(Global variables)</h2><p>全局变量实际上是全局对象的属性。在网页中，（译注：缺省的）全局对象是 window，所以你可以用形如 window.variable的语法来设置和访问全局变量。</p>
+<p>因此，你可以通过指定 <code>window</code> 或 <code>frame</code> 的名字，从一个 <code>window</code> 或 <code>frame</code> 访问另一个 <code>window</code> 或 <code>frame</code> 中声明的变量。例如，在文档里声明一个叫 <code>phoneNumber</code> 的变量，那么你就可以在子框架里使用 <code>parent.phoneNumber</code> 来引用它。</p>
+<h1 id="常量-Constants"><a href="#常量-Constants" class="headerlink" title="常量(Constants)"></a>常量(Constants)</h1><p>你可以用关键字 <code>const</code> 创建一个只读(read-only)的常量。常量标识符的命名规则和变量相同：必须以字母、下划线或美元符号开头并可以包含有字母、数字或下划线。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> prefix = <span class="string">'212'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>常量不可以通过赋值改变其值，也不可以在脚本运行时重新声明。它必须被初始化为某个值。</p>
+<p>常量的作用域规则与 <code>let</code> 块级作用域变量相同。若省略 <code>const</code> 关键字，则该标识符将被视为变量。</p>
+<p>在同一作用域中，不能使用与变量名或函数名相同的名字来命名常量。例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// THIS WILL CAUSE AN ERROR</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> f = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// THIS WILL CAUSE AN ERROR ALSO</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> g = <span class="number">5</span>;</span><br><span class="line">  <span class="keyword">var</span> g;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//statements</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然而,对象属性是不受保护的,所以可以使用如下语句来执行。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> MY_OBJECT = &#123;<span class="string">"key"</span>: <span class="string">"value"</span>&#125;;</span><br><span class="line">MY_OBJECT.key = <span class="string">"otherValue"</span>;</span><br></pre></td></tr></table></figure></p>
+<h1 id="数据结构和类型"><a href="#数据结构和类型" class="headerlink" title="数据结构和类型"></a>数据结构和类型</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>JavaScript语言可以识别下面 7 种不同类型的值：</p>
+<p>六种 <code>原型</code> 数据类型（基本数据类型）:</p>
+<ul>
+<li><code>Boolean</code> .  布尔值，<code>true</code> 和 <code>false</code>.</li>
+<li><code>null</code> . 一个表明 <code>null</code> 值的特殊关键字。 <code>JavaScript</code> 是大小写敏感的，因此 <code>null</code> 与 <code>Null</code>、<code>NULL</code>或其他变量完全不同。</li>
+<li><code>undefined</code> .  变量未定义时的属性。</li>
+<li><code>Number</code> .  表示数字，例如： <code>42</code> 或者 <code>3.14159</code>。</li>
+<li><code>String</code> .  表示字符串，例如：<code>&quot;Howdy&quot;</code></li>
+<li><code>Symbol</code> . ( 在 <code>ECMAScript 6</code> 中新添加的类型)。一种数据类型，它的实例是唯一且不可改变的。</li>
+</ul>
+<p>以及 <code>Object</code> 对象（复合数据类型）。  </p>
+<p>仅凭这些为数不多的数据类型，你就可以在你的应用程序中执行有用的功能。</p>
+<p><code>Objects</code> 和 <code>functions</code> 是本语言的其他两个基本要素。你可以将对象视为存放值的命名容器，而将函数视为你的应用程序能够执行的过程(procedures)。</p>
+<h2 id="数据类型的转换-Data-type-conversion"><a href="#数据类型的转换-Data-type-conversion" class="headerlink" title="数据类型的转换(Data type conversion)"></a>数据类型的转换(Data type conversion)</h2><p>JavaScript是一种动态类型语言(dynamically typed language)。这意味着你声明变量时可以不必指定数据类型，而数据类型会在脚本执行时根据需要自动转换。因此，你可以这样来定义变量：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> answer = <span class="number">42</span>;</span><br></pre></td></tr></table></figure>
+<p>然后，你还可以给同一个变量赋予一个字符串值，例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">answer = <span class="string">"Thanks for all the fish..."</span>;</span><br></pre></td></tr></table></figure>
+<p>因为 <code>JavaScript</code> 是动态类型的，这样赋值并不会提示出错。</p>
+<p>在涉及加法运算符(+)的数字和字符串表达式中，JavaScript 会把数字值转换为字符串。例如，假设有如下的语句：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="string">"The answer is "</span> + <span class="number">42</span> <span class="comment">// "The answer is 42"</span></span><br><span class="line">y = <span class="number">42</span> + <span class="string">" is the answer"</span> <span class="comment">// "42 is the answer"</span></span><br></pre></td></tr></table></figure>
+<p>在涉及其它运算符（译注：如下面的减号’-‘）时，JavaScript语言不会把数字变为字符串。例如（译注：第一例是数学运算，第二例是字符串运算）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"37"</span> - <span class="number">7</span> <span class="comment">// 30</span></span><br><span class="line"><span class="string">"37"</span> + <span class="number">7</span> <span class="comment">// "377"</span></span><br></pre></td></tr></table></figure>
+<h2 id="字符串转换为数字-converting-strings-to-numbers"><a href="#字符串转换为数字-converting-strings-to-numbers" class="headerlink" title="字符串转换为数字(converting strings to numbers)"></a>字符串转换为数字(converting strings to numbers)</h2><p>有一些方法可以将内存中表示一个数字的字符串转换为对应的数字</p>
+<p><code>parseInt()</code> 和 <code>parseFloat()</code><br>参见：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Automatic_semicolon_insertion" target="_blank" rel="noopener">parseInt()</a>和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Lexical_grammar" target="_blank" rel="noopener">parseFloat()</a>的相关页面。</p>
+<p><code>parseInt</code> 仅能够返回整数，所以使用它会丢失小数部分。另外，调用 <code>parseInt</code> 时最好总是带上进制(radix) 参数，这个参数用于指定使用哪一种进制。</p>
+<p>单目加法运算符<br>将字符串转换为数字的另一种方法是使用单目加法运算符。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"1.1"</span> + <span class="string">"1.1"</span> = <span class="string">"1.11.1"</span></span><br><span class="line">(+<span class="string">"1.1"</span>) + (+<span class="string">"1.1"</span>) = <span class="number">2.2</span>   <span class="comment">// 注：加入括号为清楚起见，不是必需的。</span></span><br></pre></td></tr></table></figure>
+<h1 id="字面量-Literals"><a href="#字面量-Literals" class="headerlink" title="字面量 (Literals)"></a>字面量 (Literals)</h1><p>（译注：字面量是由语法表达式定义的常量；或，通过由一定字词组成的语词表达式定义的常量）</p>
+<p>在JavaScript中，你可以使用各种字面量。这些字面量是脚本中按字面意思给出的固定的值，而不是变量。（译注：字面量是常量，其值是固定的，而且在程序脚本运行中不可更改，比如 <code>false</code> ，<code>3.1415</code> ，<code>thisIsStringOfHelloworld</code> ，<code>invokedFunction : myFunction(&quot;myArgument&quot;)</code> 。本节将介绍以下类型的字面量：  </p>
+<ul>
+<li>数组字面量(Array literals)</li>
+<li>布尔字面量(Boolean literals)</li>
+<li>浮点数字面量(Floating-point literals)</li>
+<li>整数(Intergers)</li>
+<li>对象字面量(Object literals)</li>
+<li>RegExp literals</li>
+<li>字符串字面量(String literals)</li>
+</ul>
+<h2 id="数组字面量-Array-literals"><a href="#数组字面量-Array-literals" class="headerlink" title="数组字面量 (Array literals)"></a>数组字面量 (Array literals)</h2><p>数组字面值是一个封闭在方括号对([])中的包含有零个或多个表达式的列表，其中每个表达式代表数组的一个元素。当你使用数组字面值创建一个数组时，该数组将会以指定的值作为其元素进行初始化，而其长度被设定为元素的个数。</p>
+<p>下面的示例用3个元素生成数组coffees，它的长度是3。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> coffees = [<span class="string">"French Roast"</span>, <span class="string">"Colombian"</span>, <span class="string">"Kona"</span>];</span><br><span class="line"><span class="keyword">var</span> a=[<span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a.length); <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log(a[<span class="number">0</span>]); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意</strong> 这里的数组字面值也是一种对象初始化器。参考<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Guide/Working_with_Objects#Using_Object_Initializers" target="_blank" rel="noopener">对象初始化器的使用</a>。</p>
+</blockquote>
+<p>若在顶层（全局）脚本里用字面值创建数组，JavaScript语言将会在每次对包含该数组字面值的表达式求值时解释该数组。另一方面，在函数中使用的数组，将在每次调用函数时都会被创建一次。</p>
+<p>数组字面值同时也是数组对象。有关数组对象的详情请参见数组对象一文。</p>
+<p>数组字面值中的多余逗号<br>（译注：声明时）你不必列举数组字面值中的所有元素。若你在同一行中连写两个逗号（,），数组中就会产生一个没有被指定的元素，其初始值是undefined。以下示例创建了一个名为fish的数组：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fish = [<span class="string">"Lion"</span>, , <span class="string">"Angel"</span>];</span><br></pre></td></tr></table></figure>
+<p>在这个数组中，有两个已被赋值的元素，和一个空元素（fish[0]是”Lion”，fish<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Automatic_semicolon_insertion" target="_blank" rel="noopener">1</a>是undefined，而fish<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Lexical_grammar" target="_blank" rel="noopener">2</a>是”Angel”；译注：此时数组的长度属性fish.length是3)。</p>
+<p>如果你在元素列表的尾部添加了一个逗号，它将会被忽略。在下面的例子中，数组的长度是3，并不存在myList[3]这个元素（译注：这是指数组的第4个元素噢，作者是在帮大家复习数组元素的排序命名方法）。元素列表中其它所有的逗号都表示一个新元素（的开始）。</p>
+<blockquote>
+<p><strong>注意</strong>：尾部的逗号在早期版本的浏览器中会产生错误，因而编程时的最佳实践方式就是移除它们。</p>
+</blockquote>
+<p>(译注：而“现代”的浏览器似乎鼓励这种方式，因为好多网页中都这么写？)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myList = [<span class="string">'home'</span>, , <span class="string">'school'</span>, ];</span><br></pre></td></tr></table></figure>
+<p>在下面的例子中，数组的长度是4，元素myList[0]和myList<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Lexical_grammar" target="_blank" rel="noopener">2</a>缺失（译注：没被赋值，因而是undefined）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myList = [ , <span class="string">'home'</span>, , <span class="string">'school'</span>];</span><br></pre></td></tr></table></figure>
+<p>再看一个例子。在这里，该数组的长度是4，元素myList<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Automatic_semicolon_insertion" target="_blank" rel="noopener">1</a>和myList[3]被漏掉了。（但是）只有最后的那个逗号被忽略。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myList = [<span class="string">'home'</span>, , <span class="string">'school'</span>, , ];</span><br></pre></td></tr></table></figure>
+<p>理解多余的逗号（在脚本运行时会被如何处理）的含义，对于从语言层面理解JavaScript是十分重要的。但是，在你自己写代码时：显式地将缺失的元素声明为undefined，将大大提高你的代码的清晰度和可维护性。</p>
+<h2 id="布尔字面量-Boolean-literals"><a href="#布尔字面量-Boolean-literals" class="headerlink" title="布尔字面量 (Boolean literals)"></a>布尔字面量 (Boolean literals)</h2><blockquote>
+<p>（译注：即逻辑字面量）</p>
+</blockquote>
+<p>布尔类型有两种字面量： <code>true</code> 和 <code>false</code>。</p>
+<p>不要混淆作为布尔对象的真和假与布尔类型的原始值true和false。布尔对象是原始布尔数据类型的一个包装器。参见 <a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Guide/Predefined_Core_Objects#Boolean_Object" target="_blank" rel="noopener">布尔对象</a>。</p>
+<h2 id="整数-Intergers"><a href="#整数-Intergers" class="headerlink" title="整数 (Intergers)"></a>整数 (Intergers)</h2><blockquote>
+<p>（译注：原文如此，没写成“整数字面量”，这里指的是整数字面量。）</p>
+</blockquote>
+<p>整数可以用十进制（基数为10）、十六进制（基数为16）、八进制（基数为8）以及二进制（基数为2）表示。</p>
+<ul>
+<li>十进制整数字面量由一串数字序列组成，且没有前缀0。</li>
+<li>八进制的整数以 0（或0O、0o）开头，只能包括数字0-7。</li>
+<li>十六进制整数以0x（或0X）开头，可以包含数字（0-9）和字母 a~f 或 A~F。</li>
+<li>二进制整数以0b（或0B）开头，只能包含数字0和1。</li>
+<li>严格模式下，八进制整数字面量必须以0o或0O开头，而不能以0开头。</li>
+</ul>
+<p>整数字面量举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0, 117 and -345 (十进制, 基数为10)</span><br><span class="line">015, 0001 and -0o77 (八进制, 基数为8) </span><br><span class="line">0x1123, 0x00111 and -0xF1A7 (十六进制, 基数为16或&quot;hex&quot;)</span><br><span class="line">0b11, 0b0011 and -0b11 (二进制, 基数为2)</span><br></pre></td></tr></table></figure>
+<h2 id="浮点数字面量-Floating-point-literals"><a href="#浮点数字面量-Floating-point-literals" class="headerlink" title="浮点数字面量 (Floating-point literals)"></a>浮点数字面量 (Floating-point literals)</h2><p>浮点数字面值可以有以下的组成部分：</p>
+<ul>
+<li>一个十进制整数，可以带正负号（即前缀“+”或“ - ”），</li>
+<li>小数点（“.”），</li>
+<li>小数部分（由一串十进制数表示），</li>
+<li>指数部分。</li>
+</ul>
+<p>指数部分以“e”或“E”开头，后面跟着一个整数，可以有正负号（即前缀“+”或“-”）。浮点数字面量至少有一位数字，而且必须带小数点或者“e”（大写“E”也可）。</p>
+<p>简言之，其语法是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[(+|-)][digits][.digits][(E|e)[(+|-)]digits]</span><br></pre></td></tr></table></figure>
+<p>例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.14</span>      </span><br><span class="line"><span class="number">-.2345789</span> <span class="comment">// -0.23456789</span></span><br><span class="line"><span class="number">-3.12e+12</span>  <span class="comment">// -3.12*1012</span></span><br><span class="line"><span class="number">.1e-23</span>    <span class="comment">// 0.1*10-23=10-24=1e-24</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="对象字面量-Object-literals"><a href="#对象字面量-Object-literals" class="headerlink" title="对象字面量 (Object literals)"></a>对象字面量 (Object literals)</h2><p>对象字面值是封闭在花括号对({})中的一个对象的零个或多个”属性名-值”对的（元素）列表。你不能在一条语句的开头就使用对象字面值，这将导致错误或产生超出预料的行为， 因为此时左花括号（{）会被认为是一个语句块的起始符号。（译者：这 里需要对语句statement、块block等基本名词的解释）</p>
+<p>以下是一个对象字面值的例子。对象car的第一个元素（译注：即一个属性/值对）定义了属性myCar；第二个元素，属性getCar，引用了一个函数（即CarTypes(“Honda”)）；第三个元素，属性special，使用了一个已有的变量（即Sales）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Sales = <span class="string">"Toyota"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CarTypes</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (name === <span class="string">"Honda"</span>) ?</span><br><span class="line">    name :</span><br><span class="line">    <span class="string">"Sorry, we don't sell "</span> + name + <span class="string">"."</span> ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> car = &#123; <span class="attr">myCar</span>: <span class="string">"Saturn"</span>, <span class="attr">getCar</span>: CarTypes(<span class="string">"Honda"</span>), <span class="attr">special</span>: Sales &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(car.myCar);   <span class="comment">// Saturn</span></span><br><span class="line"><span class="built_in">console</span>.log(car.getCar);  <span class="comment">// Honda</span></span><br><span class="line"><span class="built_in">console</span>.log(car.special); <span class="comment">// Toyota</span></span><br></pre></td></tr></table></figure>
+<p>更进一步的，你可以使用数字或字符串字面值作为属性的名字，或者在另一个字面值内嵌套上一个字面值。如下的示例中使用了这些可选项。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> car = &#123; <span class="attr">manyCars</span>: &#123;<span class="attr">a</span>: <span class="string">"Saab"</span>, <span class="string">"b"</span>: <span class="string">"Jeep"</span>&#125;, <span class="number">7</span>: <span class="string">"Mazda"</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(car.manyCars.b); <span class="comment">// Jeep</span></span><br><span class="line"><span class="built_in">console</span>.log(car[<span class="number">7</span>]); <span class="comment">// Mazda</span></span><br></pre></td></tr></table></figure>
+<p>对象属性名字可以是任意字符串，包括空串。如果对象属性名字不是合法的javascript标识符，它必须用””包裹。属性的名字不合法，那么便不能用.访问属性值，而是通过类数组标记(“[]”)访问和赋值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> unusualPropertyNames = &#123;</span><br><span class="line">  <span class="string">""</span>: <span class="string">"An empty string"</span>,</span><br><span class="line">  <span class="string">"!"</span>: <span class="string">"Bang!"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(unusualPropertyNames.<span class="string">""</span>);   <span class="comment">// 语法错误: Unexpected string</span></span><br><span class="line"><span class="built_in">console</span>.log(unusualPropertyNames[<span class="string">""</span>]);  <span class="comment">// An empty string</span></span><br><span class="line"><span class="built_in">console</span>.log(unusualPropertyNames.!);    <span class="comment">// 语法错误: Unexpected token !</span></span><br><span class="line"><span class="built_in">console</span>.log(unusualPropertyNames[<span class="string">"!"</span>]); <span class="comment">// Bang!</span></span><br></pre></td></tr></table></figure>
+<p><strong>增强的对象字面量 (Enhanced Object literals)</strong><br>在ES2015，对象字面值扩展支持在创建时设置原型，简写foo：foo分配，定义方法，加工父函数（super calls），计算属性名(动态)。总之，这些也带来了对象字面值和类声明紧密联系起来，让基于对象的设计得益于一些同样的便利。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    <span class="comment">// __proto__</span></span><br><span class="line">    __proto__: theProtoObj,</span><br><span class="line">    <span class="comment">// Shorthand for ‘handler: handler’</span></span><br><span class="line">    handler,</span><br><span class="line">    <span class="comment">// Methods</span></span><br><span class="line">    toString() &#123;</span><br><span class="line">     <span class="comment">// Super calls</span></span><br><span class="line">     <span class="keyword">return</span> <span class="string">"d "</span> + <span class="keyword">super</span>.toString();</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Computed (dynamic) property names</span></span><br><span class="line">    [ <span class="string">'prop_'</span> + <span class="function">(<span class="params">(</span>) =&gt;</span> <span class="number">42</span>)() ]: <span class="number">42</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>请注意：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;<span class="attr">a</span>: <span class="string">"alpha"</span>, <span class="number">2</span>: <span class="string">"two"</span>&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(foo.a);    <span class="comment">// alpha</span></span><br><span class="line"><span class="built_in">console</span>.log(foo[<span class="number">2</span>]);   <span class="comment">// two</span></span><br><span class="line"><span class="comment">//console.log(foo.2);  // Error: missing ) after argument list</span></span><br><span class="line"><span class="comment">//console.log(foo[a]); // Error: a is not defined</span></span><br><span class="line"><span class="built_in">console</span>.log(foo[<span class="string">"a"</span>]); <span class="comment">// alpha</span></span><br><span class="line"><span class="built_in">console</span>.log(foo[<span class="string">"2"</span>]); <span class="comment">// two</span></span><br></pre></td></tr></table></figure>
+<h2 id="RegExp-字面值"><a href="#RegExp-字面值" class="headerlink" title="RegExp 字面值"></a>RegExp 字面值</h2><p>一个正则表达式是字符被斜线（译注：正斜杠“/”）围成的表达式。下面是一个正则表达式文字的一个例子。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> re = <span class="regexp">/ab+c/</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="字符串字面量-String-literals"><a href="#字符串字面量-String-literals" class="headerlink" title="字符串字面量 (String literals)"></a>字符串字面量 (String literals)</h2><p>字符串字面量是由双引号（”）对或单引号（’）括起来的零个或多个字符。字符串被限定在同种引号之间；也即，必须是成对单引号或成对双引号。下面的例子都是字符串字面值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&quot;foo&quot;</span><br><span class="line">&apos;bar&apos;</span><br><span class="line">&quot;1234&quot;</span><br><span class="line">&quot;one line \n another line&quot;</span><br><span class="line">&quot;John&apos;s cat&quot;</span><br></pre></td></tr></table></figure>
+<p>你可以在字符串字面值上使用字符串对象的所有方法——JavaScript会自动将字符串字面值转换为一个临时字符串对象，调用该方法，然后废弃掉那个临时的字符串对象。你也能用对字符串字面值使用类似String.length的属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"John's cat"</span>.length) </span><br><span class="line"><span class="comment">// 将打印字符串中的字符个数（包括空格） </span></span><br><span class="line"><span class="comment">// 结果为：10</span></span><br></pre></td></tr></table></figure>
+<p>在ES2015中，还提供了一种模板字符串（template literals），模板字符串提供了一些语法糖来帮你构造字符串。这与Perl、Python还有其他语言中的字符串插值（string interpolation）的特性非常相似。除此之外，你可以在通过模板字符串前添加一个tag来自定义模板字符串的解析过程，这可以用来防止注入攻击，或者用来建立基于字符串的高级数据抽象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Basic literal string creation</span></span><br><span class="line">In JavaScript <span class="string">'\n'</span> is a line-feed.</span><br><span class="line"></span><br><span class="line"><span class="comment">// Multiline strings</span></span><br><span class="line"><span class="string">`In JavaScript this is</span></span><br><span class="line"><span class="string"> not legal.`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// String interpolation</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">"Bob"</span>, time = <span class="string">"today"</span>;</span><br><span class="line"><span class="string">`Hello <span class="subst">$&#123;name&#125;</span>, how are you <span class="subst">$&#123;time&#125;</span>?`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Construct an HTTP request prefix is used to interpret the replacements and construction</span></span><br><span class="line">POST <span class="string">`http://foo.org/bar?a=<span class="subst">$&#123;a&#125;</span>&amp;b=<span class="subst">$&#123;b&#125;</span></span></span><br><span class="line"><span class="string">     Content-Type: application/json</span></span><br><span class="line"><span class="string">     X-Credentials: <span class="subst">$&#123;credentials&#125;</span></span></span><br><span class="line"><span class="string">     &#123; "foo": <span class="subst">$&#123;foo&#125;</span>,</span></span><br><span class="line"><span class="string">       "bar": <span class="subst">$&#123;bar&#125;</span>&#125;`</span> (myOnReadyStateChangeHandler);</span><br></pre></td></tr></table></figure>
+<p>除非有特别需要使用字符串对象，否则,你应当始终使用字符串字面值。要查看字符串对象的有关细节，请参见<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Guide/Predefined_Core_Objects#String_Object" target="_blank" rel="noopener">字符串对象</a>。</p>
+<p>在字符串中使用的特殊字符<br>作为一般字符的扩展，你可以在字符串中使用特殊字符，如下例所示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"one line \n another line"</span></span><br></pre></td></tr></table></figure>
+<p>以下表格列举了你能在JavaScript的字符串中使用的特殊字符。</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>意思</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\0</td>
+<td>Null字节</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格符</td>
+</tr>
+<tr>
+<td>\f</td>
+<td>换页符</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车符</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>Tab (制表符)</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td>\’</td>
+<td>单引号</td>
+</tr>
+<tr>
+<td>\”</td>
+<td>双引号</td>
+</tr>
+<tr>
+<td>\</td>
+<td>反斜杠字符（\）</td>
+</tr>
+<tr>
+<td>\XXX</td>
+<td>由从0到377最多三位八进制数XXX表示的 Latin-1 字符。例如，\251是版权符号的八进制序列。</td>
+</tr>
+<tr>
+<td>\xXX</td>
+<td>由从00和FF的两位十六进制数字XX表示的Latin-1字符。例如，\ xA9是版权符号的十六进制序列。</td>
+</tr>
+<tr>
+<td>\uXXXX</td>
+<td>由四位十六进制数字XXXX表示的Unicode字符。例如，\ u00A9是版权符号的Unicode序列。见Unicode escape sequences (Unicode 转义字符).</td>
+</tr>
+<tr>
+<td>\u{XXXXX}</td>
+<td>Unicode代码点 (code point) 转义字符。例如，\u{2F804} 相当于Unicode转义字符 \uD87E\uDC04的简写。</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>译注：严格模式下，不能使用八进制转义字符。</p>
+</blockquote>
+<p><strong>转义字符</strong><br>对于那些未出现在上中的字符，其所带的前导反斜线’\’将被忽略。但是，这一用法已被废弃，应当避免使用。</p>
+<p>通过在引号前加上反斜线’\’，可以在字符串中插入引号，这就是引号转义。例如:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> quote = <span class="string">"He read \"The Cremation of Sam McGee\" by R.W. Service."</span>;</span><br><span class="line"><span class="built_in">console</span>.log(quote);</span><br></pre></td></tr></table></figure>
+<p>代码的运行结果为:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">He read <span class="string">"The Cremation of Sam McGee"</span> by R.W. Service.</span><br></pre></td></tr></table></figure>
+<p>要在字符串中插入’\’字面值，必须转义反斜线。例如，要把文件路径 c:\temp 赋值给一个字符串，可以采用如下方式:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> home = <span class="string">"c:\\temp"</span>;</span><br></pre></td></tr></table></figure>
+<p>也可以在换行之前加上反斜线以转义换行（译注：实际上就是一条语句拆成多行书写），这样反斜线和换行都不会出现在字符串的值中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"this string \</span></span><br><span class="line"><span class="string">is broken \</span></span><br><span class="line"><span class="string">across multiple\</span></span><br><span class="line"><span class="string">lines."</span></span><br><span class="line"><span class="built_in">console</span>.log(str);   <span class="comment">// this string is broken across multiplelines.</span></span><br></pre></td></tr></table></figure>
+<p>Javascript没有“heredoc”语法，但可以用行末的换行符转义和转义的换行来近似实现 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> poem = </span><br><span class="line"><span class="string">"Roses are red,\n\</span></span><br><span class="line"><span class="string">Violets are blue.\n\</span></span><br><span class="line"><span class="string">Sugar is sweet,\n\</span></span><br><span class="line"><span class="string">and so is foo."</span></span><br></pre></td></tr></table></figure>
+<p>ECMAScript 2015 增加了一种新的字面量，叫做模板字面量 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="noopener">template literals</a>。它包含一些新特征，包括了多行字符串！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> poem =</span><br><span class="line"><span class="string">`Roses are red,</span></span><br><span class="line"><span class="string">Violets are blue.</span></span><br><span class="line"><span class="string">Sugar is sweet,</span></span><br><span class="line"><span class="string">and so is foo.`</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"><i class="fa fa-tag"></i>  javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/20171226/professional-javascript-for-web-3-5/" rel="next" title="JavaScript高级程序设计第三版（读后感）（第五篇）">
+                <i class="fa fa-chevron-left"></i> JavaScript高级程序设计第三版（读后感）（第五篇）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/20180107/professional-javascript-for-web-3-6/" rel="prev" title="professional-javascript-for-web-3-6">
+                professional-javascript-for-web-3-6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDYxNy83MTcy"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/yexk.jpg"
+               alt="Yexk" />
+          <p class="site-author-name" itemprop="name">Yexk</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yexk" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:yexk@yexk.cn" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yexk.cn/" title="Yexk" target="_blank">Yexk</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注释"><span class="nav-number">2.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#声明"><span class="nav-number">3.</span> <span class="nav-text">声明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">3.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#声明变量"><span class="nav-number">3.2.</span> <span class="nav-text">声明变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量求值"><span class="nav-number">3.3.</span> <span class="nav-text">变量求值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的作用域"><span class="nav-number">3.4.</span> <span class="nav-text">变量的作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量声明提升-Variable-hoisting"><span class="nav-number">3.5.</span> <span class="nav-text">变量声明提升(Variable hoisting)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数提升（Function-hoisting）"><span class="nav-number">3.6.</span> <span class="nav-text">函数提升（Function hoisting）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#全局变量-Global-variables"><span class="nav-number">3.7.</span> <span class="nav-text">全局变量(Global variables)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常量-Constants"><span class="nav-number">4.</span> <span class="nav-text">常量(Constants)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据结构和类型"><span class="nav-number">5.</span> <span class="nav-text">数据结构和类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">5.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型的转换-Data-type-conversion"><span class="nav-number">5.2.</span> <span class="nav-text">数据类型的转换(Data type conversion)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串转换为数字-converting-strings-to-numbers"><span class="nav-number">5.3.</span> <span class="nav-text">字符串转换为数字(converting strings to numbers)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字面量-Literals"><span class="nav-number">6.</span> <span class="nav-text">字面量 (Literals)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组字面量-Array-literals"><span class="nav-number">6.1.</span> <span class="nav-text">数组字面量 (Array literals)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔字面量-Boolean-literals"><span class="nav-number">6.2.</span> <span class="nav-text">布尔字面量 (Boolean literals)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数-Intergers"><span class="nav-number">6.3.</span> <span class="nav-text">整数 (Intergers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浮点数字面量-Floating-point-literals"><span class="nav-number">6.4.</span> <span class="nav-text">浮点数字面量 (Floating-point literals)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象字面量-Object-literals"><span class="nav-number">6.5.</span> <span class="nav-text">对象字面量 (Object literals)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RegExp-字面值"><span class="nav-number">6.6.</span> <span class="nav-text">RegExp 字面值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串字面量-String-literals"><span class="nav-number">6.7.</span> <span class="nav-text">字符串字面量 (String literals)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yexk</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Gemini
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ty6mz2hGqGk8xduiOzsxD2jv-gzGzoHsz", "sqN2jQgA8miCM9odE7FFOts8");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

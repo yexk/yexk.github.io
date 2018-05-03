@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端调试,console," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="现在移动开发的技术不断成熟，但在移动上面开发调试是很复杂的。遇到些浏览器兼容性问题。且不说解决，能找到问题都是一个很麻烦的事情。此文档适用用于PC端。">
+<meta name="keywords" content="前端调试,console">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动端JavaScript调试">
+<meta property="og:url" content="http://ym125.cc/20170815/mobile-debuger/index.html">
+<meta property="og:site_name" content="Yexk_M 极致分享">
+<meta property="og:description" content="现在移动开发的技术不断成熟，但在移动上面开发调试是很复杂的。遇到些浏览器兼容性问题。且不说解决，能找到问题都是一个很麻烦的事情。此文档适用用于PC端。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/1_1_console.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/1_2_reult_sconsole.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/1_3_sources.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/1_4_point.gif">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/android_use.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/chrome_inspect.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/chrome_usb_debuger.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/chrome_demo.gif">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/weinre_install.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/weinre_start.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/weinre_page.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/weinre_connect_success.png">
+<meta property="og:image" content="http://ym125.cc/20170815/mobile-debuger/weinre_demo.gif">
+<meta property="og:updated_time" content="2017-12-14T12:44:55.662Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动端JavaScript调试">
+<meta name="twitter:description" content="现在移动开发的技术不断成熟，但在移动上面开发调试是很复杂的。遇到些浏览器兼容性问题。且不说解决，能找到问题都是一个很麻烦的事情。此文档适用用于PC端。">
+<meta name="twitter:image" content="http://ym125.cc/20170815/mobile-debuger/1_1_console.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://ym125.cc/20170815/mobile-debuger/"/>
+
+
+
+
+
+  <title>移动端JavaScript调试 | Yexk_M 极致分享</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a3ba2b238223714f37841f8ecc2bd53c";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yexk_M 极致分享</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">Yexk:一个具有幻想力的程序猿</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://ym125.cc/20170815/mobile-debuger/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yexk">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/yexk.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yexk_M 极致分享">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">移动端JavaScript调试</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-15T16:01:37+08:00">
+                2017-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/20170815/mobile-debuger/" class="leancloud_visitors" data-flag-title="移动端JavaScript调试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>现在移动开发的技术不断成熟，但在移动上面开发调试是很复杂的。遇到些浏览器兼容性问题。且不说解决，能找到问题都是一个很麻烦的事情。<br>此文档适用用于PC端。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>目前我已知的调试方式：</p>
+<ol>
+<li>源码调试。</li>
+<li>alert调试。</li>
+<li>浏览器的console打印调试（Chrome DevTools、Firebug）</li>
+<li>控制台断点调试</li>
+<li>Chrome浏览器的ChromeDevTools远程调试</li>
+<li>weinre调试</li>
+</ol>
+<h3 id="源码调试"><a href="#源码调试" class="headerlink" title="源码调试"></a>源码调试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">推荐指数 ：不推荐</span><br><span class="line">调试难度 ：*****</span><br><span class="line">实用性   ：*</span><br></pre></td></tr></table></figure>
+<p>查看源代码的方式一步一步的去读代码，然后找到错误并修改。<br>这方式不适合我这种菜鸟。对于大神，请随意。我比较喜欢直接看结果的调试方式。</p>
+<blockquote>
+<p><strong>优点</strong>：可以装x。<br><strong>缺点</strong>：调试时间长，效率低。</p>
+</blockquote>
+<h3 id="alert调试"><a href="#alert调试" class="headerlink" title="alert调试"></a>alert调试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">推荐指数 ：***</span><br><span class="line">调试难度 ：****</span><br><span class="line">实用性   ：**</span><br></pre></td></tr></table></figure>
+<p><code>alert()</code>方法的初衷是为了通过弹窗的方式，来警告或提示用户做对应的操作，并且有强制中断效果。<br>目前对于弹窗已经有许多替代品，而默认的alert常常都是用于调试。在我觉得有错误的位置前后操作。如果有弹窗就说明没问题。否则就出现问题。</p>
+<p><strong>例如</strong>：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>1_1_alert.html<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="comment">// 这里有很多很多代码。。。</span></span></span><br><span class="line"><span class="undefined">		alert(1);</span></span><br><span class="line"><span class="javascript">		<span class="built_in">document</span>.getElementById(<span class="string">'ye_test_1'</span>).innerHTML = <span class="string">"Yexk"</span>;</span></span><br><span class="line"><span class="undefined">		alert(2);</span></span><br><span class="line"><span class="javascript">		<span class="comment">// 这里有很多很多代码。。。</span></span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>通过访问发现，这里只弹出了1，没有弹出2，那就是这两行代码中间出现了问题。<br>去寻找问题，发现了这行代码的意思是找到元素的ID为ye_test_1。但这个文档里面是没有这个元素的，所以报错了。<br>解决办法根据实际开发情况去更改代码就可以了。</p>
+<blockquote>
+<p>首先找到这段代码自己觉得有问题的地方，然后对这段代码进行前后加上alert()。<br>要是找不出问题在哪也没有关系，可以在一些关键的地方进行加上调试，然后进一步的缩小范围。<br><strong>优点</strong>：效果明显，简单除暴。<br><strong>缺点</strong>：操作麻烦，只能打印基本数据类型（字符串，数字，等）</p>
+</blockquote>
+<p>个人觉得这个调试虽然这方法简单粗暴，但是有利有弊，并且利小于弊。比如在for循环里面查看里面的执行情况，那就太麻烦了。这个可以根据实际情况酌情选择。</p>
+<h3 id="浏览器的console打印调试"><a href="#浏览器的console打印调试" class="headerlink" title="浏览器的console打印调试"></a>浏览器的console打印调试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">推荐指数 ：*****</span><br><span class="line">调试难度 ：****</span><br><span class="line">实用性   ：****</span><br></pre></td></tr></table></figure>
+<p>控制台调试工具，目前属于最好用的调试工具，没有有之一。目前常用的：<a href="https://developers.google.com/web/tools/chrome-devtools/" target="_blank" rel="noopener">Chrome DevTools</a>（Chrome浏览器自带）、Firebug（需要自行安装）、其他浏览器自带的。<br>调试方法相对文艺，功能强大。可以查看具体的执行位置，报错的位置。<br><strong>例如</strong>：<br>对下面的div进行赋值为”js is so cool!”<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>1_2_console.html<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> div = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</span></span><br><span class="line"><span class="javascript">		div.innerHTML = <span class="string">'js is so cool'</span>;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>类似这种错误，通过上面所说的alert方法就调试不出为啥，因为语法没有错误。这里可以通过查看获取的div对象查找原因。<br>代码改成：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(div);</span><br><span class="line">div.innerHTML = <span class="string">'js is so cool'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><img src="/20170815/mobile-debuger/1_1_console.png"></p>
+<p>可以发现获取的div元素是被一个数组给包裹起来了。而对div直接复制相当于给数组添加一个键值对。所以这里要想取得div元素对象，只要在取得div数组里下标为0的元素然后在进行赋值就行了。<br>最后代码改成：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(div);</span><br><span class="line">div[<span class="number">0</span>].innerHTML = <span class="string">'js is so cool'</span>;</span><br></pre></td></tr></table></figure></p>
+<p>修改后的结果：<br><img src="/20170815/mobile-debuger/1_2_reult_sconsole.png"><br>这里也可以通过语法知识去判断，不过在这里只是为了演示这个console的案例。</p>
+<blockquote>
+<p>控制台打印已经可满足大部分调试了，基本没有控制台解决不了的问题。如果有，请配合其他调试方式和带上脑子。<br><strong>优点</strong>：效果明显，简单除暴+功能齐全，可以打印任何数据类型，操作简单使用方便。<br><strong>缺点</strong>：打印对象太多了就会展不开对象的信息。</p>
+</blockquote>
+<p>附录：<a href="other/console_other.md">console对象的其他方法</a></p>
+<h3 id="控制台断点调试"><a href="#控制台断点调试" class="headerlink" title="控制台断点调试"></a>控制台断点调试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">推荐指数 ：***</span><br><span class="line">调试难度 ：****</span><br><span class="line">实用性   ：**</span><br></pre></td></tr></table></figure>
+<p>有很多时候想知道代码是怎么走的。想看看整个函数是怎么执行的。通过alert弹窗提示和console控制台打印都太麻烦了。而且执行流程还是看的不清晰。在编程领域有个调试方式很好用并且很很简洁明了的，那就是<code>断点调试</code>。<br><br>首先我们来看看控制台的调试界面：<br><img src="/20170815/mobile-debuger/1_3_sources.png"></p>
+<ol>
+<li><strong>文档树</strong>：显示当前文档引用的文档关系。</li>
+<li><strong>源码区</strong>：显示你选择的文件的源码。并且可以查看文件源码，加断点。</li>
+<li><strong>监听区</strong>：查看你添加的监听事件或者变量。</li>
+</ol>
+<p><strong>例如</strong>：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> even = <span class="number">0</span>,odd = <span class="number">0</span> ;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span></span><br><span class="line"><span class="javascript">			<span class="keyword">if</span> (<span class="number">0</span> == i%<span class="number">2</span>) &#123;</span></span><br><span class="line"><span class="undefined">				even++;</span></span><br><span class="line"><span class="javascript">			&#125;<span class="keyword">else</span>&#123;</span></span><br><span class="line"><span class="undefined">				odd++;</span></span><br><span class="line"><span class="undefined">			&#125;</span></span><br><span class="line"><span class="undefined">		&#125;</span></span><br><span class="line"><span class="undefined">	</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这里可以在for循环的开始进行打断点调试。<br>步骤：</p>
+<ol>
+<li>选择需要查看的文件，找对应的代码段。</li>
+<li>给想查看的代码段前加上断点。（在行号处单击）</li>
+<li>监听想看的的变量。选中-&gt;右键-&gt;Add selected text to watches</li>
+<li>刷新页面，js代码会停止在断点的位置。</li>
+<li>点击监听窗口的下一步（或者按F11）。</li>
+<li>根据业务逻辑查看代码的走向，看看是否正确。然后在做对应的修复。</li>
+</ol>
+<blockquote>
+<p>打上断点后再次单击就是取消断点。</p>
+</blockquote>
+<p>结果：<br><img src="/20170815/mobile-debuger/1_4_point.gif"></p>
+<p>通过断点，监听了三个变量，我们可以看到详细的代码执行流程和变量的赋值情况。</p>
+<blockquote>
+<p>断点调试，虽然好用，但总觉得有点大材小用。</p>
+<p><strong>优点</strong>：调试过程非常明了，效果明显且效率高。<br><strong>缺点</strong>：当引用了jQuery的DOM操作的时候调试起来比较鸡肋。</p>
+</blockquote>
+<h3 id="Chrome-DevTools远程调试"><a href="#Chrome-DevTools远程调试" class="headerlink" title="Chrome DevTools远程调试"></a>Chrome DevTools远程调试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">推荐指数 ：**</span><br><span class="line">调试难度 ：**</span><br><span class="line">实用性   ：**</span><br></pre></td></tr></table></figure>
+<p>移动开发最头痛的是调试，想要看看手机端里面的页面有什么问题。</p>
+<blockquote>
+<p>调试前提</p>
+</blockquote>
+<ol>
+<li>必须在PC端和移动端都配置安装好chrome浏览器。</li>
+<li>必须用数据线与电脑连接。</li>
+</ol>
+<blockquote>
+<p>这个有点像chrome里面的移动设备模式。调试模式基本差不多。</p>
+</blockquote>
+<p>调试步骤：</p>
+<ol>
+<li>在PC和Android手机都装好chrome浏览器。</li>
+<li>手机连接到PC，并且装好驱动。打开开发者权限-USB调试功能。<img src="/20170815/mobile-debuger/android_use.png"></li>
+<li>在手机端的chrome浏览器访问需要调试的页面。</li>
+<li>在PC端的chrome浏览器输入：<code>chrome://inspect</code>。<img src="/20170815/mobile-debuger/chrome_inspect.png"></li>
+<li>点击“inspect”,就会弹出控制台。<img src="/20170815/mobile-debuger/chrome_usb_debuger.png">
+<blockquote>
+<p>图中的手机是真机设备。并不是浏览器自带的。当PC浏览器在调试的时候手机界面也会跟着动。实现同步。</p>
+</blockquote>
+</li>
+</ol>
+<p>调试演示：<br><img src="/20170815/mobile-debuger/chrome_demo.gif"></p>
+<blockquote>
+<p>接下来就可以和浏览器的控制台一样自行调试了。</p>
+<p><strong>优点</strong>：调试过程非常明了，效果明显且效率高。<br><strong>缺点</strong>：需要真机。</p>
+</blockquote>
+<h3 id="weinre调试"><a href="#weinre调试" class="headerlink" title="weinre调试"></a>weinre调试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">推荐指数 ：*</span><br><span class="line">调试难度 ：*</span><br><span class="line">实用性   ：*</span><br></pre></td></tr></table></figure>
+<p>上述所说的问题有一定的局限性。必须是PC和手机都有chrome浏览器，然后需要数据线连接。这样并不方便调试兼容性且麻烦。</p>
+<blockquote>
+<p>Weinre(WebInspector Remote)是一款基于Web Inspector(Webkit)的远程调试工具，借助于网络，可以在PC上直接调试运行在移动设备上的远程页面，中文意思是远程Web检查器，有了Weinre，在PC上可以即时修改目标网页的HTML/CSS/JavaScript，调试过程可实时显示移动设备上页面的预览效果，并同步显示设备页面的错误和警告信息，可以查看网络资源的信息，不过weinre不支持断点调试</p>
+</blockquote>
+<p><strong>安装前提：</strong><br><span style="color:#f0f">需要<code>nodejs</code>环境。安装node教程请自行度娘。占位飞机：<a href="../nodejs/nodejs_install.md">nodejs教程</a></span></p>
+<p><strong>安装weinre</strong><br><code>npm -g install weinre</code>  //安装weinre<br><img src="/20170815/mobile-debuger/weinre_install.png"></p>
+<blockquote>
+<p>这里我使用了淘宝镜像（cnpm）。</p>
+</blockquote>
+<p><strong>启动</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 语法: weinre --boundHost [hostname | ip address |-all-]  --httpPort [port]  //启动weinre</span><br><span class="line">	weinre --boundHost -all-  --httpPort 8080</span><br></pre></td></tr></table></figure></p>
+<img src="/20170815/mobile-debuger/weinre_start.png">
+<p>通过浏览器（推荐使用PC端）访问就应该可以看到这个界面。<br><img src="/20170815/mobile-debuger/weinre_page.png"></p>
+<p>启动来之后需要配置后才能使用。在需要调试的代码中添加一个脚本文件<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://192.168.10.24:8080/target/target-script-min.js#anonymous"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 把IP地址换成局域网上的ip，端口改成刚刚启动时候配置的。 --&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>点击“Access Points”下的那个连接：<code>http://127.0.0.1:8080/client/#anonymous</code><br>可以看到这个界面：<br><img src="/20170815/mobile-debuger/weinre_connect_success.png"></p>
+<blockquote>
+<p>如果targets显示none就代表没配置成功或者没有打开配置好需要调试的页面。如果显示绿色表示已经监听到事件页面了。</p>
+</blockquote>
+<p>所有的配置以及完成了。接下来就看看效果。<br><img src="/20170815/mobile-debuger/weinre_demo.gif"></p>
+<blockquote>
+<p>接下来就可以拥有调试里面的样式等等。不过这个功能配置相对麻烦。。一般都不会使用。</p>
+<p><strong>优点</strong>：调试过程非常明了，效果明显且效率高。<br><strong>缺点</strong>：配置比较麻烦，并且调试没有浏览器自带的控制台利索，不怎么好用。 </p>
+</blockquote>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><blockquote>
+<p>我个人一般而且强力推第三种，浏览器控制台够用了。<br>正所谓调试页面的方法千千万，找到合适自己的就好。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端调试/" rel="tag"><i class="fa fa-tag"></i>  前端调试</a>
+          
+            <a href="/tags/console/" rel="tag"><i class="fa fa-tag"></i>  console</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/20170815/bower-get-start/" rel="next" title="bower 快速入门">
+                <i class="fa fa-chevron-left"></i> bower 快速入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/20170815/jquery-common/" rel="prev" title="jQuery常用的方法">
+                jQuery常用的方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMDYxNy83MTcy"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/yexk.jpg"
+               alt="Yexk" />
+          <p class="site-author-name" itemprop="name">Yexk</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">34</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yexk" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:yexk@yexk.cn" target="_blank" title="E-Mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                    
+                      E-Mail
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://yexk.cn/" title="Yexk" target="_blank">Yexk</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#调试方式"><span class="nav-number">1.</span> <span class="nav-text">调试方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#源码调试"><span class="nav-number">1.1.</span> <span class="nav-text">源码调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#alert调试"><span class="nav-number">1.2.</span> <span class="nav-text">alert调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器的console打印调试"><span class="nav-number">1.3.</span> <span class="nav-text">浏览器的console打印调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#控制台断点调试"><span class="nav-number">1.4.</span> <span class="nav-text">控制台断点调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chrome-DevTools远程调试"><span class="nav-number">1.5.</span> <span class="nav-text">Chrome DevTools远程调试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#weinre调试"><span class="nav-number">1.6.</span> <span class="nav-text">weinre调试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">2.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 &mdash; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yexk</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Gemini
+    </a>
+  </div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ty6mz2hGqGk8xduiOzsxD2jv-gzGzoHsz", "sqN2jQgA8miCM9odE7FFOts8");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
