@@ -19,6 +19,7 @@ tags:
 1.	rp-pppoe-3.11-5.el7.x86_64 
 2.	ppp-2.4.5-33.el7.x86_64
 3.	radvd-1.9.2-9.el7.x86_64
+4.  kea-dhcp-1.3.0 (这个下面有下载链接。安装教程参考官网)
 
 > 当时的版本
 
@@ -99,6 +100,13 @@ radvd -C /etc/radvd.conf
 ### KEA DHCP 
 下载链接：[https://www.isc.org/downloads/](https://www.isc.org/downloads/)
 官方文档：[ftp://ftp.isc.org/isc/kea/1.2.0/doc/kea-guide.html](ftp://ftp.isc.org/isc/kea/1.2.0/doc/kea-guide.html)  
+
+> 这里需要注意了。如果编译不过可能是因为kea依赖的库没有安装。需要先安装kea的依赖库。
+
+照着上面这个链接的教程去安装。然后修改配置文件。
+```shell
+vim /etc/kea/kea.conf
+```
 
 ```shell
 # DHCPv6 configuration starts here.
