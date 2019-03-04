@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://ym125.cc/20190225/ts-group-1/</loc>
-    <lastmod>2019-02-25T01:31:51.592Z</lastmod>
+    <loc>http://ym125.cc/20190304/ts-group-2/</loc>
+    <lastmod>2019-03-04T01:00:54.859Z</lastmod>
     <data>
         <display>
-        <title>【第一期】 ts群每周学习一点点</title>
-        <pubTime>2019-02-25T01:22:34.000Z</pubTime>
+        <title>【第二期】 ts群每周学习一点点</title>
+        <pubTime>2019-03-04T00:59:18.000Z</pubTime>
         
         <tag>ts交流群</tag>
          
@@ -25,7 +25,7 @@
     
   <url>
     <loc>http://ym125.cc/20181126/qq-group/</loc>
-    <lastmod>2018-11-26T07:46:20.670Z</lastmod>
+    <lastmod>2019-02-25T01:51:32.489Z</lastmod>
     <data>
         <display>
         <title>VUE|TypeScript|前端交流群</title>
@@ -37,6 +37,26 @@
            
              
               <breadCrumb title="qq交流群" url="http://ym125.cc/categories/qq%E4%BA%A4%E6%B5%81%E7%BE%A4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://ym125.cc/20190225/ts-group-1/</loc>
+    <lastmod>2019-02-25T01:31:51.592Z</lastmod>
+    <data>
+        <display>
+        <title>【第一期】 ts群每周学习一点点</title>
+        <pubTime>2019-02-25T01:22:34.000Z</pubTime>
+        
+        <tag>ts交流群</tag>
+         
+         
+           
+             
+              <breadCrumb title="ts交流群" url="http://ym125.cc/categories/ts%E4%BA%A4%E6%B5%81%E7%BE%A4/"/>
           
         </display>
     </data>
