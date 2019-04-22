@@ -7,7 +7,7 @@ tags: ts交流群
 ---
 
 1. 详解 Laravel 中的依赖注入和 IoC https://segmentfault.com/a/1190000018806797
-2. 深入 Nginx 之配置篇 ttps://learnku.com/articles/24795
+2. 深入 Nginx 之配置篇 https://learnku.com/articles/24795
 3. 前端实现在线预览pdf、word、xls、ppt等文件 https://segmentfault.com/a/1190000018806682
 4. 深入理解前端性能监控 https://segmentfault.com/a/1190000018785911
 5. 灵活使用 console 让 js 调试更简单 https://segmentfault.com/a/1190000018756503
