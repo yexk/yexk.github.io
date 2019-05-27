@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 【第十一期】 ts群每周学习一点点
+title: 【第十二期】 ts群每周学习一点点
 date: 2019-05-27 09:12:59
 categories: ts交流群
 tags: ts交流群
