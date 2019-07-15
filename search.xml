@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>【第十九期】 某公司的支付中心架构演进</title>
+      <link href="/20190715/ts-group/"/>
+      <url>/20190715/ts-group/</url>
+      <content type="html"><![CDATA[<ol><li>JavaScript设计模式（七）：命令模式 <a href="https://segmentfault.com/a/1190000019756093" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019756093</a></li><li>Vue实战-菜单栏，商品展示数据交互（8） <a href="https://segmentfault.com/a/1190000019752721" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019752721</a></li><li>Vue组件通信 <a href="https://segmentfault.com/a/1190000019747368" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019747368</a></li><li>一个阿里产品经理眼中的“垃圾分类” <a href="https://segmentfault.com/a/1190000019740407" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019740407</a> </li><li>简洁方便的集合处理——Java 8 stream流 <a href="https://segmentfault.com/a/1190000019574204" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019574204</a></li><li>通过PHP与Python代码对比浅析语法差异 <a href="https://segmentfault.com/a/1190000019710720" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019710720</a></li><li>马蜂窝支付中心架构演进 <a href="https://segmentfault.com/a/1190000019673536" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019673536</a></li><li>有赞前端质量保障体系 <a href="https://segmentfault.com/a/1190000019706355" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019706355</a></li><li>最新：Lodash 严重安全漏洞背后你不得不知道的 JavaScript 知识 <a href="https://segmentfault.com/a/1190000019735321" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019735321</a></li><li>TS与JS中的Getters和Setter究竟有什么用 <a href="https://segmentfault.com/a/1190000019712906" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019712906</a></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> ts交流群 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ts交流群 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>【第十八期】 ts群每周学习一点点</title>
       <link href="/20190708/ts-group/"/>
       <url>/20190708/ts-group/</url>
