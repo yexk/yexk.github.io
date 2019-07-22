@@ -3,6 +3,27 @@
   
     
     <entry>
+      <title>【第二十期】 2019 DevOps 路线规划（技术指南）</title>
+      <link href="/20190722/ts-group/"/>
+      <url>/20190722/ts-group/</url>
+      <content type="html"><![CDATA[<ol><li>教你 30 秒发布一个 TypeScript 包到 NPM <a href="https://segmentfault.com/a/1190000019827652" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019827652</a></li><li>为什么视频网站的视频链接地址是blob？ <a href="https://juejin.im/post/5d1ea7a8e51d454fd8057bea" target="_blank" rel="noopener">https://juejin.im/post/5d1ea7a8e51d454fd8057bea</a></li><li>2019 DevOps 技术指南 <a href="https://segmentfault.com/a/1190000019814636" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019814636</a></li><li>vue-cli3.0项目中使用vw——相比flexible更原生的移动端解决方案 <a href="https://segmentfault.com/a/1190000019812737" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019812737</a></li><li>公司要求会使用框架vue，面试题会被问及哪些？ <a href="https://segmentfault.com/a/1190000019807591" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019807591</a></li><li>【JS必知必会】高阶函数详解与实战 <a href="https://segmentfault.com/a/1190000019796451" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019796451</a></li><li>8个问题看你是否真的懂 JS <a href="https://segmentfault.com/a/1190000019754823" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019754823</a></li><li>Flutter网格型布局 - GridView篇 <a href="https://segmentfault.com/a/1190000019756746" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019756746</a></li><li>TypeScript基础类型与联合类型 <a href="https://segmentfault.com/a/1190000019750871" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019750871</a></li><li>Proxy 的巧用 <a href="https://segmentfault.com/a/1190000019725835" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019725835</a></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> ts交流群 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ts交流群 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>【第十九期】 某公司的支付中心架构演进</title>
       <link href="/20190715/ts-group/"/>
       <url>/20190715/ts-group/</url>
